@@ -22,6 +22,7 @@ export class FoodmenuComponent implements OnInit {
 	public grandTotal = 0;
 	public AckView = false;
 	public delivery_time = 0;
+	public selected ;
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private http: Http,) { }
@@ -31,8 +32,11 @@ export class FoodmenuComponent implements OnInit {
     const apiurl = "http://demo5635398.mockable.io/" + this.path;
     this.http.get(apiurl)
     .subscribe((response)=>{
+    	console.log('res', response.json());
     	 this.foodList = response.json()["menu-items"];
     	 this.displayList = this.foodList;
+
+    	 console.log('disp', this.displayList);
     });
 
   }
@@ -63,6 +67,7 @@ export class FoodmenuComponent implements OnInit {
   	}
   }
   public addFoodtoCart(item){
+
   	this.checkoutList.push(item);
   	this.total += item.price;
   }
@@ -93,5 +98,9 @@ export class FoodmenuComponent implements OnInit {
   	this.checkoutList.splice(this.checkoutList.indexOf(item),1);
   	this.total = this.total - item.price;
   	this.checkoutCart();
+  }
+    public RemoveItem(item){
+  	this.checkoutList.splice(this.checkoutList.indexOf(item),1);
+  	this.total = this.total - item.price;
   }
 }

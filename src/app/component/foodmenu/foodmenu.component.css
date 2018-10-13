@@ -53,16 +53,11 @@ font-size: 40px;
     font-size: 28px;
     font-weight: bold;
 }
-tr:hover {
-  background-color: #ffa;
-}
+
 th {
   font-size: 15px;
 }
-tr:active td {
-        background: none repeat scroll 0 0 #54b135;
-        color: #000000;
-    }
+
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -85,4 +80,24 @@ tr:active td {
 .scroll-modal{
     overflow-y: scroll; 
     overflow-x: hidden;;
+}
+ .StatusRed{
+  color: red;
+  padding: 1px;
+  border:2px solid black;
+
+ }
+ .StatusGreen{
+  color: green;
+  padding:1px;
+  border:2px solid black;
+}
+.IconGreen{
+  color: green;
+  cursor: pointer;
+  padding:1px;
+  border:2px solid black;
+}
+.IconGreen:active{
+  background-color: orange;
 }

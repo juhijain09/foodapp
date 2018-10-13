@@ -1,13 +1,14 @@
-<div class="navbar-fixed ">
+<div class="navbar-navbar-fixed ">
   <nav>
     <div class="nav-wrapper blue-grey">
-      <a href="#!" class="brand-logo" style="text-decoration:none"><i class="material-icons icon icon-large">home</i></a>
+      <a href="#!" class="brand-logo left" style="text-decoration:none"><i class="material-icons icon icon-large">home</i></a>
 
-      <ul class="right hide-on-med-and-down">
+      <ul class="right">
+      	      	<li class="hide-on-med-and-down" style="color: orange">10% off on order value above 100 !</li>
       	<li><a class="waves-effect waves-light btn">{{path}}</a></li>
       	        <li><a class="waves-effect waves-light btn" (click) = "checkoutCart()"> <i class="material-icons right">shopping_cart</i></a></li>
           </ul>
-       <form class=" hide-on-med-and-down" id="form1" >
+       <form class="hide-on-med-and-down" id="form1" >
         <div class="input-field" style="max-width: 400pt;">
           <input id="search" type="search" (keyup)= "searchFood($event.target.value)" placeholder="What would you like to eat today?">
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -24,18 +25,25 @@
         <th>Items</th> 
         <th>Price(Rs)<span class="glyphicon glyphicon-filter icon" (click) = toggleSortPrice()></span></th>
         <th>Rating <span class="glyphicon glyphicon-filter icon" (click) = toggleSortRating()></span></th>
+        <th>Add Items</th>
       </tr>
+
     </thead>
     <tbody *ngFor = " let item of displayList" >
-      <tr (click) = "addFoodtoCart(item)">
-        <td>{{item.name}}</td>
-        <td>{{item.price}}</td>
+      <tr>
+     <td>{{item.name}}
+     	<span 
+     	[ngClass]="(item.type=='veg')?'StatusGreen':'StatusRed'">
+     	<i class="tiny material-icons">fiber_manual_record</i></span>
+	</td>
+        <td >{{item.price}}</td>
         <td>{{item.rating}}</td>
+        <td> <i class=" material-icons IconGreen" (click) = "addFoodtoCart(item)">add</i>
+         <i class="material-icons IconGreen" (click) = "RemoveItem(item)">remove</i></td>
       </tr>
     </tbody>
   </table>
 </div>
-
 
 <div *ngIf= "toggleView === true" id="myModal" class="modal scroll-modal">
 
